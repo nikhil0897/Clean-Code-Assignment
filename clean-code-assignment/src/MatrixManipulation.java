@@ -46,7 +46,7 @@ public class MatrixManipulation {
     public static int[][] manipulateMatrixWithZero(int matrix[][]) {
         int i, j, rowSize = matrix.length, columnSize = matrix[0].length;
         int rowCheck[] = new int[rowSize], columnCheck[] = new int[columnSize];
-        for (i = 0; i < rowSize; i++) {    // initializing this with 1
+        for (i = 0; i < rowSize; i++) {    // initializing all the elements of rowCheck[] and columnCheck[] with 1
             rowCheck[i] = 1;
         }
         for (i = 0; i < columnSize; i++) {
@@ -97,11 +97,11 @@ public class MatrixManipulation {
                     matrix[i][j] = input.nextInt();
                 }
             }
-            int modifiedMatrix[][] = manipulateMatrixWithZero(matrix);
+            int modifiedMatrix[][] = manipulateMatrixWithZero(matrix);    // modifiedMatrix[][] will store the matrix returned by manipulateMatrixWithZero()
             System.out.println();
             System.out.println("This is the modified matrix: ");
             printMatrix(modifiedMatrix);
-        } catch (NegativeArraySizeException negativeMatrixSize) {
+        } catch (NegativeArraySizeException negativeMatrixSize) {    // this will execute if the user input negative values for the row or colun size 
             System.out.println("Row or Column size can't be negative.");
         }
     }
@@ -110,7 +110,7 @@ public class MatrixManipulation {
 
 /**
  * Time Complexity of this code: O(M*N), where M is the number of rows and N is the number of columns
- * Auxiliary Space: O(M+N)
+ * Auxiliary Space (any extra space used by this code): O(M+N)
  *
  * Good practices that I have followed while writing this code:
  * 1. A function should be small.
