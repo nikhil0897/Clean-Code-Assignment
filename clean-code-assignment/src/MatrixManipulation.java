@@ -7,14 +7,17 @@ import java.util.Scanner;
 public class MatrixManipulation {
 
     /**
-     * This function is converting rows of matrix[][] to 0 according to the occurrences of '0' in matrix[][]
-     * @param matrix is the initial 2D matrix
-     * @param rowCheck is the new array that we created in order to convert particular rows to 0
+     * This function is converting rows of matrix[][] to 0 according to the
+     * occurrences of '0' in matrix[][]
+     * 
+     * @param matrix   is the initial 2D matrix
+     * @param rowCheck is the new array that we created in order to convert
+     *                 particular rows to 0
      */
     private static void convertRowsZero(int matrix[][], int rowCheck[]) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if(rowCheck[i] == 0) {
+                if (rowCheck[i] == 0) {
                     matrix[i][j] = 0;
                 }
             }
@@ -22,14 +25,17 @@ public class MatrixManipulation {
     }
 
     /**
-     * This function is converting columns of matrix[][] to 0 according to the occurrences of '0' in matrix[][]
-     * @param matrix is the initial 2D matrix
-     * @param columnCheck is the new array that we created in order to convert particular columns to 0
+     * This function is converting columns of matrix[][] to 0 according to the
+     * occurrences of '0' in matrix[][]
+     * 
+     * @param matrix      is the initial 2D matrix
+     * @param columnCheck is the new array that we created in order to convert
+     *                    particular columns to 0
      */
     private static void convertColumnsZero(int matrix[][], int columnCheck[]) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if(matrix[i][j]!=0 && columnCheck[j] == 0) {
+                if (matrix[i][j] != 0 && columnCheck[j] == 0) {
                     matrix[i][j] = 0;
                 }
             }
@@ -37,23 +43,24 @@ public class MatrixManipulation {
     }
 
     /**
-     * This function is setting particular elements of rowCheck[] and columnCheck[] to 0 in
-     * order to convert matrix[][] accordingly later on
+     * This function is setting particular elements of rowCheck[] and columnCheck[]
+     * to 0 in order to convert matrix[][] accordingly later on
+     * 
      * @param matrix
-     * @return statement is returning the modified matrix with all the rows and columns containing
-     *         any '0'converted entirely to 0
+     * @return statement is returning the modified matrix with all the rows and
+     *         columns containing any '0'converted entirely to 0
      */
     public static int[][] manipulateMatrixWithZero(int matrix[][]) {
         int i, j, rowSize = matrix.length, columnSize = matrix[0].length;
         int rowCheck[] = new int[rowSize], columnCheck[] = new int[columnSize];
-        for (i = 0; i < rowSize; i++) {    // initializing all the elements of rowCheck[] and columnCheck[] with 1
+        for (i = 0; i < rowSize; i++) { // initializing all the elements of rowCheck[] and columnCheck[] with 1
             rowCheck[i] = 1;
         }
         for (i = 0; i < columnSize; i++) {
             columnCheck[i] = 1;
         }
-        for (i = 0; i < rowSize; i++) {     // setting 0 at some places in rowCheck[] and columnCheck[]
-            for (j = 0; j < columnSize; j++) {      // according to the occurrence of '0' in matrix[][]
+        for (i = 0; i < rowSize; i++) { // setting 0 at some places in rowCheck[] and columnCheck[]
+            for (j = 0; j < columnSize; j++) { // according to the occurrence of '0' in matrix[][]
                 if (matrix[i][j] == 0) {
                     rowCheck[i] = 0;
                     columnCheck[j] = 0;
@@ -68,11 +75,12 @@ public class MatrixManipulation {
 
     /**
      * This function is displaying the final matrix
+     * 
      * @param matrix
      */
     public static void printMatrix(int matrix[][]) {
-        for(int i=0; i<matrix.length; i++) {
-            for(int j=0; j<matrix[0].length; j++) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 System.out.printf(matrix[i][j] + " ");
             }
             System.out.println();
@@ -80,8 +88,9 @@ public class MatrixManipulation {
     }
 
     /**
-     * This is the main(), here I am taking input from the user for number or rows and columns
-     * and then input to the 2D matrix[][]
+     * This is the main(), here I am taking input from the user for number or rows
+     * and columns and then input to the 2D matrix[][]
+     * 
      * @param args
      */
     public static void main(String args[]) {
@@ -92,16 +101,18 @@ public class MatrixManipulation {
             int numberOfColumn = input.nextInt();
             int[][] matrix = new int[numberOfRow][numberOfColumn];
             System.out.println("Enter data in the matrix: ");
-            for( int i=0; i<numberOfRow; i++ ) {
-                for( int j=0; j<numberOfColumn; j++ ) {
+            for (int i = 0; i < numberOfRow; i++) {
+                for (int j = 0; j < numberOfColumn; j++) {
                     matrix[i][j] = input.nextInt();
                 }
             }
-            int modifiedMatrix[][] = manipulateMatrixWithZero(matrix);    // modifiedMatrix[][] will store the matrix returned by manipulateMatrixWithZero()
+            int modifiedMatrix[][] = manipulateMatrixWithZero(matrix); // modifiedMatrix[][] will store the matrix
+                                                                       // returned by manipulateMatrixWithZero()
             System.out.println();
             System.out.println("This is the modified matrix: ");
             printMatrix(modifiedMatrix);
-        } catch (NegativeArraySizeException negativeMatrixSize) {    // this will execute if the user input negative values for the row or colun size 
+        } catch (NegativeArraySizeException negativeMatrixSize) { // this will execute if the user input negative values
+                                                                  // for the row or colun size
             System.out.println("Row or Column size can't be negative.");
         }
     }
